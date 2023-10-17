@@ -32,6 +32,7 @@ Graph GRAPHinit(int V);
 void GRAPHinsertArc(Graph G, vertex v, vertex w); 
 void UGRAPHinsertArc(Graph G, vertex v, vertex w);
 void GRAPHremoveArc(Graph G, vertex v, vertex w);
+void UGRAPHremoveArc(Graph G, vertex v, vertex w);
 int GRAPHindeg(Graph ghp, vertex v);
 int GRAPHoutdeg(Graph ghp, vertex v);
 void GRAPHshow(Graph G);

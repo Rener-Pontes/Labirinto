@@ -73,6 +73,11 @@ void GRAPHremoveArc (Graph G, vertex v, vertex w) {
     }
 }
 
+void UGRAPHremoveArc (Graph G, vertex v, vertex w) {
+   GRAPHremoveArc(G, v, w);
+   GRAPHremoveArc(G, w, v);
+}
+
 int GRAPHindeg(Graph ghp, vertex v) {return 0;}
 
 int GRAPHoutdeg(Graph ghp, vertex v) {return 0;}
