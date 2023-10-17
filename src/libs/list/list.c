@@ -45,6 +45,10 @@ void GRAPHinsertArc( Graph G, vertex v, vertex w) {
 }
 
 void UGRAPHinsertArc(Graph G, vertex v, vertex w) { 
+   if (v > G->V || w > G->V)
+      return;
+   if (v < 0 || w < 0)
+      return;
    for (link a = G->adj[v]; a != NULL; a = a->next) 
       if (a->w == w) return;
    G->adj[v] = NEWnode( w, G->adj[v]);
