@@ -15,7 +15,7 @@ int checa_quant_parametro(int argc){
 int checa_parametro_valido(int argc, char** argv){
 	if (argc == min) {
 		if(strcmp(argv[1], "--h") == 0 || strcmp(argv[1], "--help") == 0) {
-			printf("maze ql qc alg s t\n");
+			printf("maze ql qc alg s t\n\n");
 			printf("maze --h/--help\n");
 			printf("maze --v/--version\n");
 			printf("ql = Quantidade de linhas\n");
