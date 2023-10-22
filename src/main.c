@@ -23,7 +23,8 @@ int main(int argc, char** argv) {
 	char* alg = argv[ALG_INDEX];
 	char s = argv[S_INDEX][0],
 		 t = argv[T_INDEX][0];
-	
+	vertex vertice_inicial = s == 'u' ? escolhe_vertice_superior(qc) : escolhe_vertice_inferior(ql, qc);
+	vertex vertice_final   = t == 'u' ? escolhe_vertice_superior(qc) : escolhe_vertice_inferior(ql, qc);
 }
 
 static vertex escolhe_vertice_superior(int qc) {
