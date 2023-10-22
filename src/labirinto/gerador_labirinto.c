@@ -6,6 +6,23 @@
 #include "../libs/list/list.h"
 
 
+static Graph gerador_matriz_grade(int q_linhas, int q_colunas);
+static void cria_arcos_horizontais(Graph grafo_grade, int q_linhas, int q_colunas, int total_vertices);
+static void cria_arcos_verticais(Graph grafo_grade, int q_linhas, int q_colunas, int total_vertices);
+
+static void cria_paredes(Graph labirinto);
+static void apaga_n_vertices(Graph labirinto, int q_remover, vertex vertice);
+
+
+Graph gerador_labirinto(int q_linhas, int q_colunas) {
+	Graph labirinto = gerador_matriz_grade(q_linhas, q_colunas);
+
+	cria_paredes(labirinto);
+
+	return labirinto;
+}
+
+
 static Graph gerador_matriz_grade(int q_linhas, int q_colunas) {
 	int total_vertices = q_linhas * q_colunas;
 	Graph novo = GRAPHinit(total_vertices);
