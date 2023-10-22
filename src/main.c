@@ -4,6 +4,9 @@
 #include "labirinto/lab.h"
 #include "libs/list/list.h"
 
+static vertex escolhe_vertice_superior(int qc);
+static vertex escolhe_vertice_inferior(int ql, int qc);
+
 int main(int argc, char** argv) {
 	if (checa_quant_parametro(argc) != 0) {
 		printf("Utilize ./<nome executável> --help para saber as opções de ajuda");
@@ -21,4 +24,15 @@ int main(int argc, char** argv) {
 	char s = argv[S_INDEX][0],
 		 t = argv[T_INDEX][0];
 	
+}
+
+static vertex escolhe_vertice_superior(int qc) {
+	srand(time(NULL));
+
+	return rand() % qc;
+}
+static vertex escolhe_vertice_inferior(int ql, int qc) {
+	srand(time(NULL));
+	
+	return (ql - 1) * qc + rand() % qc;
 }
