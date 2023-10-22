@@ -242,3 +242,28 @@ bool GRAPHreach(Graph G, vertex s, vertex t) {
    return true;
 }
 
+static int num_bfs[1000];
+static vertex pa_bfs[1000];
+void GRAPHbfs( Graph G, vertex s) {
+   int cnt = 0;
+
+   for (vertex v = 0; v < G->V; ++v)
+      num_bfs[v] = pa_bfs[v] = -1;
+
+   QUEUEinit( G->V);
+
+   num_bfs[s] = cnt++;
+   pa_bfs[s] = s;
+   QUEUEput( s);
+
+   while (!QUEUEempty( )) {
+      vertex v = QUEUEget( );
+      for (link a = G->adj[v]; a != NULL; a = a->next)
+         if (num_bfs[a->w] == -1) {
+            num_bfs[a->w] = cnt++;
+            pa_bfs[a->w] = v;
+            QUEUEput( a->w);
+         }
+   }
+   QUEUEfree( );
+}
