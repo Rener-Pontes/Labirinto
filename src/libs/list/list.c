@@ -197,38 +197,28 @@ void listSink(Graph G){
 }
 
 
-static int cnt;
 static int indent = 0;
-int pre[1000];
+static int cnt, pre_dfs[1000];
+static int cntt, post_dfs[1000];
+static vertex pa_dfs[1000];
 void GRAPHdfs( Graph G) {
-  cnt = 0;
-
-  for (vertex v = 0; v < G->V; ++v)
-    pre[v] = -1;
-
-  for (vertex v = 0; v < G->V; ++v) {
-    if (pre[v] == -1) {
-      printf("%d dfsR(G, %d)\n", v, v);
-      dfsR( G, v); // começa nova etapa
-      printf("%d\n", v);
-    }
-  }
+   cnt = cntt = 0;
+   for (vertex v = 0; v < G->V; ++v)
+      pre_dfs[v] = -1;
+   for (vertex v = 0; v < G->V; ++v)
+      if (pre_dfs[v] == -1) {
+         pa_dfs[v] = v;
+         dfsR( G, v);
+      }
 }
-
 static void dfsR( Graph G, vertex v) {
-  pre[v] = cnt++;
-  for (link a = G->adj[v]; a != NULL; a = a->next) {
-    vertex w = a->w;
-    if (pre[w] == -1){
-      printIndent();
-      printf("%d-%d dfsR(G, %d)\n", v, w, w);
-      indent += 2;
-      dfsR( G, w);
-    }
-    printIndent();
-    printf("%d\n", w);
-    indent -= 2;
-  }
+   pre_dfs[v] = cnt++;
+   for (link a = G->adj[v]; a != NULL; a = a->next)
+      if (pre_dfs[a->w] == -1) {
+         pa_dfs[a->w] = v;
+         dfsR( G, a->w);
+      }
+   post_dfs[v] = cntt++;
 }
 
 static void printIndent() {
@@ -251,3 +241,4 @@ bool GRAPHreach(Graph G, vertex s, vertex t) {
 
    return true;
 }
+
