@@ -65,8 +65,8 @@ void GRAPHremoveArc (Graph G, vertex v, vertex w) {
           G->adj[v] = p->next;
         else
           q->next = p->next;
-        p = NULL;
         free(p);
+        p = NULL;
         return;
       }
       q = p;
@@ -80,7 +80,14 @@ void UGRAPHremoveArc (Graph G, vertex v, vertex w) {
 
 int GRAPHindeg(Graph ghp, vertex v) {return 0;}
 
-int GRAPHoutdeg(Graph ghp, vertex v) {return 0;}
+int GRAPHoutdeg(Graph ghp, vertex v) {
+   int cont = 0;
+
+   for (link w = ghp->adj[v]; w != NULL; w = w->next)
+      cont++;
+
+   return cont;
+}
 
 void GRAPHshow( Graph G) { 
 	
