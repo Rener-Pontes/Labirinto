@@ -1,4 +1,6 @@
 #include <time.h>
+#include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
 #include "labirinto/lab.h"
@@ -25,6 +27,16 @@ int main(int argc, char** argv) {
 		 t = argv[T_INDEX][0];
 	vertex vertice_inicial = s == 'u' ? escolhe_vertice_superior(qc) : escolhe_vertice_inferior(ql, qc);
 	vertex vertice_final   = t == 'u' ? escolhe_vertice_superior(qc) : escolhe_vertice_inferior(ql, qc);
+
+	printf("Vértice inicial: %d\n"
+		   "Vértice final: %d\n",
+		    vertice_inicial, vertice_final);
+
+	if (strcmp(alg, "bfs") == 0) {
+		aplica_bfs(labirinto, vertice_inicial, vertice_final);
+	} else if (strcmp(alg, "dfs") == 0) {
+		aplica_dfs(labirinto, vertice_inicial, vertice_final);
+	}
 }
 
 static vertex escolhe_vertice_superior(int qc) {
