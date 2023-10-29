@@ -46,7 +46,7 @@ bool isSource(Graph G, vertex v);
 void listSink(Graph G);
 void listSource(Graph G);
 Graph GRAPHrandTounament(int V);
-void GRAPHdfs(Graph G);
+void GRAPHdfs(Graph G, vertex s);
 void GRAPHbfs( Graph G, vertex s);
 bool GRAPHreach(Graph G, vertex s, vertex t);
 

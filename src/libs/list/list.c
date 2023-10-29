@@ -200,16 +200,19 @@ void listSink(Graph G){
 static int indent = 0;
 static int cnt, pre_dfs[1000];
 static int cntt, post_dfs[1000];
-static vertex pa_dfs[1000];
-void GRAPHdfs( Graph G) {
+vertex pa_dfs[1000];
+void GRAPHdfs( Graph G, vertex s) {
    cnt = cntt = 0;
    for (vertex v = 0; v < G->V; ++v)
       pre_dfs[v] = -1;
-   for (vertex v = 0; v < G->V; ++v)
+   vertex v = s;
+   do {
       if (pre_dfs[v] == -1) {
          pa_dfs[v] = v;
          dfsR( G, v);
       }
+      v = (v + 1) % G->V;
+   } while (v != s);
 }
 static void dfsR( Graph G, vertex v) {
    pre_dfs[v] = cnt++;
@@ -242,8 +245,8 @@ bool GRAPHreach(Graph G, vertex s, vertex t) {
    return true;
 }
 
-static int num_bfs[1000];
-static vertex pa_bfs[1000];
+int num_bfs[1000];
+vertex pa_bfs[1000];
 void GRAPHbfs( Graph G, vertex s) {
    int cnt = 0;
 
