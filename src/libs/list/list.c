@@ -198,8 +198,8 @@ void listSink(Graph G){
 
 
 static int indent = 0;
-static int cnt, pre_dfs[1000];
-static int cntt, post_dfs[1000];
+int cnt, pre_dfs[1000];
+int cntt, post_dfs[1000];
 vertex pa_dfs[1000];
 void GRAPHdfs( Graph G, vertex s) {
    cnt = cntt = 0;
